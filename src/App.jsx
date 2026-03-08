@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Propuesta1 from "./components/propuesta1";
-import Propuesta2 from "./components/propuesta2";
+import Propuesta1 from "./components/propuesta1.jsx";
+import Propuesta2 from "./components/Propuesta2.jsx";
 
 export default function App() {
   return (
