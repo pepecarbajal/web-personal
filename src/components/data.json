@@ -1,0 +1,119 @@
+{
+  "persona": {
+    "nombre": "Jose Luis Carbajal",
+    "titulo": "Ingeniero · Diseñador · Programador",
+    "ciudad": "Chilpancingo de los Bravo, Guerrero",
+    "universidad": "Tecnológico de Chilpancingo",
+    "experiencia": "+1 años de experiencia",
+    "fotoPerfil": "https://nupec.com/wp-content/uploads/2022/02/cat-watching-2021-08-26-15-42-24-utc.jpg",
+    "fotoFondo": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&q=80",
+    "badges": ["Chilpancingo", "Tecnológico de Chilpancingo", "Muchos años de experiencia"]
+  },
+  "sobreMi": {
+    "quienSoy": {
+      "icono": "🌿",
+      "titulo": "¿Quién soy?",
+      "texto": "Soy Jose Luis... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "queSoy": {
+      "icono": "✦",
+      "titulo": "¿Qué soy?",
+      "texto": "Soy... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "vidaProfesional": {
+      "icono": "🏛️",
+      "titulo": "Vida profesional",
+      "texto": "Hice... Amet mollit occaecat id anim nostrud occaecat do anim cillum aliqua eu. Nisi ut anim aliquip magna anim ea. Exercitation velit do id proident non magna est velit. Ad sit et tempor laborum tempor pariatur irure qui. Dolore dolore nostrud fugiat eiusmod aliqua Lorem eu minim nostrud excepteur. Occaecat quis fugiat ipsum sunt. Occaecat qui nulla sit ullamco.Ut sit est dolor aliqua. Mollit magna fugiat tempor et incididunt. Dolor fugiat dolore esse mollit minim pariatur do. Duis amet amet cillum excepteur magna veniam aute duis voluptate eiusmod esse."
+    },
+    "queHaHecho": {
+      "icono": "📖",
+      "titulo": "¿Qué he hecho?",
+      "texto": "He realizado proyectos... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. He participado en conferencias internacionales y publicado artículos en revistas como 'Arquitectura Viva' y 'Domus'."
+    }
+  },
+  "familia": {
+    "foto": "https://media.licdn.com/dms/image/v2/C4D12AQE07f3CSYZBHg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1603141099665?e=2147483647&v=beta&t=OZuAF6Dp4P5lARjkeQ4tgCyZhlgQADigkGEpfFmJ27w ",
+    "texto1": "Mi familia es... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "texto2": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "texto3": "Cillum reprehenderit ipsum ad elit nostrud ipsum reprehenderit id consequat enim cupidatat commodo culpa. Ipsum tempor aute non laborum mollit Lorem mollit proident mollit aliquip. Ea aliqua sint nisi enim laboris nisi. Consectetur elit anim tempor enim velit. Consectetur ad ad incididunt qui id deserunt nulla proident ipsum veniam sint aliqua ipsum.",
+    "estadisticas": [
+      { "numero": "1", "label": "Años" },
+      { "numero": "1", "label": "Viajes" },
+      { "numero": "1", "label": "Países visitados" }
+      
+    ]
+  },
+  "album": [
+    {
+      "id": 1,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Viajes"
+    },
+    {
+      "id": 2,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Proyectos"
+    },
+    {
+      "id": 3,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Eventos"
+    },
+    {
+      "id": 4,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Familia"
+    },
+    {
+      "id": 5,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Proyectos"
+    },
+    {
+      "id": 6,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Eventos"
+    },
+    {
+      "id": 7,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Viajes"
+    },
+    {
+      "id": 8,
+      "imagen": "https://img.freepik.com/foto-gratis/paisaje-otono-carretera-forestal_23-2151843652.jpg?semt=ais_hybrid&w=740&q=80",
+      "lugar": "Nombre del lugar",
+      "descripcion": "Descripcion del lugar",
+      "categoria": "Eventos"
+    }
+  ],
+  "contacto": {
+    "email": "correo@correo.mx",
+    "telefono": "+52 1234565784",
+    "ubicacion": "Colonia sin nombre, Chilpancingo de los Bravo, Guerrero",
+    "web": "www.paginaweb.mx",
+    "descripcion": "Invitacion a contactar... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  "redes": [
+    { "nombre": "Instagram", "handle": "@usuario.user", "icono": "📸", "color": "#e1306c", "url": "#" },
+    { "nombre": "LinkedIn", "handle": "Nombre de usuario", "icono": "💼", "color": "#0077b5", "url": "#" },
+    { "nombre": "Twitter / X", "handle": "@usuario.user", "icono": "🐦", "color": "#1da1f2", "url": "#" },
+    { "nombre": "YouTube", "handle": "Canal de Youtube", "icono": "▶️", "color": "#ff0000", "url": "#" },
+    { "nombre": "Pinterest", "handle": "Nombre de usuario", "icono": "📌", "color": "#e60023", "url": "#" },
+    { "nombre": "WhatsApp", "handle": "Mensaje directo", "icono": "💬", "color": "#25d366", "url": "#" }
+  ]
+}

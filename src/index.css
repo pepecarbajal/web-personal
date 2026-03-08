@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/* ── Fuentes personalizadas ── */
+@theme {
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-dm:        'DM Sans', sans-serif;
+  --font-playfair:  'Playfair Display', serif;
+  --font-nunito:    'Nunito', sans-serif;
+
+  /* Colores propuesta 1 */
+  --color-p1-bg:          #faf6f0;
+  --color-p1-bg-alt:      #fdf9f4;
+  --color-p1-border:      #e8ddd0;
+  --color-p1-muted:       #8a7060;
+  --color-p1-text:        #3d2b1f;
+  --color-p1-dark:        #A88580;
+  --color-p1-footer:      #2a2420;
+  --color-p1-accent:      #b87355;
+  --color-p1-accent-soft: #c4a882;
+  --color-p1-accent-pale: #e8ddd0;
+
+  /* Colores propuesta 2 */
+  --color-p2-bg:          #fdfcfb;
+  --color-p2-bg-alt:      #f9f5f2;
+  --color-p2-pastel-1:    #fce8e4;
+  --color-p2-pastel-2:    #e8f0f7;
+  --color-p2-pastel-3:    #f5f0eb;
+  --color-p2-border:      #edddd8;
+  --color-p2-text:        #2d2320;
+  --color-p2-text-soft:   #7a6560;
+  --color-p2-text-muted:  #b0a09a;
+  --color-p2-red:         #c94f4f;
+  --color-p2-red-light:   #f0d0cf;
+
+  /* Animaciones */
+  --animate-hero-1: fadeUp 1s ease 0.1s both;
+  --animate-hero-2: fadeUp 1s ease 0.3s both;
+  --animate-hero-3: fadeUp 1s ease 0.5s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Solo lo que Tailwind no puede expresar con clases: */
+
+/* 1. Pseudo-elemento ::before en cards p1 */
+.p1-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: theme(--color-p1-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.p1-card:hover::before { opacity: 1; }
+
+/* 2. Blobs con filter blur (Tailwind solo tiene blur en clases de filter para el elemento, no para pseudo) */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  pointer-events: none;
+}
