@@ -154,7 +154,7 @@ const Hero = () => {
             <img src={data.persona.fotoPerfil} alt={data.persona.nombre} className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-5 -left-8 font-nunito rounded-2xl px-5 py-3 bg-white border border-p2-border shadow-[0_8px_32px_rgba(180,120,110,0.12)]">
-            <div className="text-xs font-semibold mb-0.5 text-p2-red">✦ Arquitecta</div>
+            <div className="text-xs font-semibold mb-0.5 text-p2-red">✦ Ingeniero</div>
             <div className="text-xs text-p2-text-muted">{data.persona.ciudad}</div>
           </div>
           <div className="absolute -top-6 -right-6 size-14 rounded-2xl flex items-center justify-center text-2xl bg-white shadow-[0_8px_24px_rgba(180,120,110,0.12)]">
