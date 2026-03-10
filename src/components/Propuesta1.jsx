@@ -35,10 +35,12 @@ function FadeSection({ children, delay = 0, className = "" }) {
 const Nav = ({ active }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [
-    { id: "sobre-mi", label: "Sobre mí" },
-    { id: "familia",  label: "Familia"  },
-    { id: "album",    label: "Álbum"    },
-    { id: "contacto", label: "Contacto" },
+    { id: "sobre-mi",  label: "Sobre mí"  },
+    { id: "familia",   label: "Familia"   },
+    { id: "album",     label: "Álbum"     },
+    { id: "noticias",  label: "Noticias"  },
+    { id: "proyectos", label: "Proyectos" },
+    { id: "contacto",  label: "Contacto"  },
   ];
   return (
     <nav className="
@@ -58,7 +60,7 @@ const Nav = ({ active }) => {
       <ul className="flex gap-10 list-none m-0 p-0 max-md:hidden">
         {links.map(l => (
           <li key={l.id}>
-            <a
+            
               href={`#${l.id}`}
               className={`text-xs tracking-widest uppercase no-underline transition-colors ${
                 active === l.id ? "text-p1-accent" : "text-p1-muted"
@@ -87,7 +89,7 @@ const Nav = ({ active }) => {
           <ul className="flex flex-col list-none m-0 p-0">
             {links.map(l => (
               <li key={l.id}>
-                <a
+                
                   href={`#${l.id}`}
                   onClick={() => setMenuOpen(false)}
                   className={`block px-6 py-3 text-xs tracking-widest uppercase no-underline transition-colors ${
@@ -232,7 +234,6 @@ const Familia = () => {
   );
 }
 
-
 const Album = () => {
   const [filtro, setFiltro] = useState("Todos");
   const cats = ["Todos", ...new Set(data.album.map(a => a.categoria))];
@@ -294,7 +295,7 @@ const Album = () => {
           ))}
         </div>
 
-        {/* Mobile grid: 2 cols, uniform rows */}
+        {/* Mobile grid */}
         <div className="hidden max-md:grid grid-cols-2 gap-3" style={{ gridAutoRows: "180px" }}>
           {filtered.map((f) => (
             <div
@@ -315,6 +316,183 @@ const Album = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const Noticias = () => {
+  const noticias = data.noticias;
+  return (
+    <section id="noticias" className="py-28 bg-p1-bg-alt max-md:py-16">
+      <div className="max-w-5xl mx-auto px-16 max-md:px-6">
+        <FadeSection>
+          <p className="font-dm text-xs tracking-widest uppercase mb-2 text-p1-accent">Actualidad</p>
+          <h2
+            className="font-cormorant font-normal mb-14 text-p1-text max-md:mb-8"
+            style={{ fontSize: "clamp(2.2rem, 3.5vw, 3rem)" }}
+          >
+            Noticias y<br /><em>novedades</em>
+          </h2>
+        </FadeSection>
+
+        <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+          {noticias.map((n, i) => (
+            <FadeSection key={n.id} delay={i * 0.1}>
+              <article className="group flex flex-col h-full rounded-2xl overflow-hidden border border-p1-border bg-p1-bg transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(61,43,31,0.12)]">
+                {/* Imagen */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                  <img
+                    src={n.imagen}
+                    alt={n.titulo}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                  />
+                  <span className="absolute top-3 left-3 font-dm text-[10px] tracking-widest uppercase px-3 py-1 rounded-full bg-p1-accent text-white">
+                    {n.categoria}
+                  </span>
+                </div>
+
+                {/* Contenido */}
+                <div className="flex flex-col flex-1 p-6">
+                  <p className="font-dm text-xs text-p1-muted mb-3">{n.fecha}</p>
+                  <h3 className="font-cormorant text-xl font-semibold mb-3 text-p1-text leading-snug">
+                    {n.titulo}
+                  </h3>
+                  <p className="font-dm text-sm leading-relaxed text-p1-muted flex-1">{n.resumen}</p>
+                  
+                    href={n.enlace}
+                    className="mt-5 font-dm text-xs tracking-widest uppercase text-p1-accent no-underline inline-flex items-center gap-2 group/link"
+                  >
+                    Leer más
+                    <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">→</span>
+                  </a>
+                </div>
+              </article>
+            </FadeSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const Proyectos = () => {
+  const [activo, setActivo] = useState(null);
+  const proyectos = data.proyectos;
+
+  return (
+    <section id="proyectos" className="py-28 bg-p1-bg max-md:py-16">
+      <div className="max-w-5xl mx-auto px-16 max-md:px-6">
+        <FadeSection>
+          <p className="font-dm text-xs tracking-widest uppercase mb-2 text-p1-accent">Trayectoria</p>
+          <h2
+            className="font-cormorant font-normal mb-14 text-p1-text max-md:mb-8"
+            style={{ fontSize: "clamp(2.2rem, 3.5vw, 3rem)" }}
+          >
+            Proyectos<br /><em>destacados</em>
+          </h2>
+        </FadeSection>
+
+        <div className="flex flex-col gap-4">
+          {proyectos.map((p, i) => {
+            const abierto = activo === p.id;
+            return (
+              <FadeSection key={p.id} delay={i * 0.08}>
+                <div
+                  className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+                    abierto
+                      ? "border-p1-accent bg-p1-bg shadow-[0_16px_60px_rgba(61,43,31,0.10)]"
+                      : "border-p1-border bg-p1-bg hover:border-p1-accent/50"
+                  }`}
+                >
+                  {/* Cabecera */}
+                  <button
+                    onClick={() => setActivo(abierto ? null : p.id)}
+                    className="w-full flex items-center justify-between gap-6 p-7 cursor-pointer bg-transparent border-none text-left max-md:p-5"
+                  >
+                    <div className="flex items-center gap-6 max-md:gap-4">
+                      <span className="font-cormorant font-light text-3xl leading-none w-10 shrink-0 text-p1-accent/40 max-md:text-2xl">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <p className="font-dm text-[10px] tracking-widest uppercase mb-1 text-p1-accent">
+                          {p.categoria} · {p.año}
+                        </p>
+                        <h3 className="font-cormorant text-2xl font-semibold text-p1-text leading-tight max-md:text-xl">
+                          {p.nombre}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <span
+                      className={`shrink-0 size-8 rounded-full border border-p1-accent flex items-center justify-center font-dm text-p1-accent transition-transform duration-300 ${
+                        abierto ? "rotate-45" : ""
+                      }`}
+                      style={{ fontSize: "1.1rem", lineHeight: 1 }}
+                    >
+                      +
+                    </span>
+                  </button>
+
+                  {/* Detalle expandible */}
+                  <div
+                    style={{
+                      maxHeight: abierto ? "600px" : "0",
+                      opacity: abierto ? 1 : 0,
+                      transition: "max-height 0.45s ease, opacity 0.35s ease",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div className="grid grid-cols-2 gap-10 px-7 pb-8 pt-2 border-t border-p1-border max-md:grid-cols-1 max-md:px-5 max-md:gap-6">
+                      {/* Imagen */}
+                      <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                        <img
+                          src={p.imagen}
+                          alt={p.nombre}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Info */}
+                      <div className="flex flex-col justify-center">
+                        <p className="font-dm text-sm leading-relaxed text-p1-muted mb-6">{p.descripcion}</p>
+
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {p.tags.map((t, ti) => (
+                            <span
+                              key={ti}
+                              className="font-dm text-xs px-3 py-1 rounded-full border border-p1-border text-p1-muted"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        {p.metricas && (
+                          <div className="flex gap-8 pt-6 border-t border-p1-border">
+                            {p.metricas.map((m, mi) => (
+                              <div key={mi}>
+                                <div
+                                  className="font-cormorant font-light text-p1-accent leading-none"
+                                  style={{ fontSize: "2rem" }}
+                                >
+                                  {m.valor}
+                                </div>
+                                <div className="font-dm text-xs tracking-widest uppercase mt-1 text-p1-muted">
+                                  {m.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FadeSection>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -363,7 +541,7 @@ const Contacto = () => {
             <h3 className="font-cormorant text-2xl mb-6 text-p1-text">Sígueme en redes</h3>
             <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
               {redes.map((r, i) => (
-                <a
+                
                   key={i}
                   href={r.url}
                   className="group flex items-center gap-3 p-4 rounded-xl border border-p1-border bg-p1-bg no-underline transition-all duration-300 hover:bg-p1-dark hover:border-p1-dark hover:-translate-y-0.5"
@@ -396,7 +574,7 @@ const Propuesta1 = () => {
   const [active, setActive] = useState("hero");
 
   useEffect(() => {
-    const ids = ["sobre-mi", "familia", "album", "contacto"];
+    const ids = ["sobre-mi", "familia", "album", "noticias", "proyectos", "contacto"];
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
       { threshold: 0.3 }
@@ -412,6 +590,8 @@ const Propuesta1 = () => {
       <SobreMi />
       <Familia />
       <Album />
+      <Noticias />
+      <Proyectos />
       <Contacto />
       <footer className="flex justify-between items-center px-16 py-6 bg-p1-footer max-md:flex-col max-md:gap-2 max-md:px-6 max-md:py-5 max-md:text-center">
         <span className="font-cormorant text-xl text-p1-accent-soft">{data.persona.nombre}</span>
