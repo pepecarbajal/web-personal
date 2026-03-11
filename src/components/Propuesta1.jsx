@@ -52,7 +52,7 @@ const Nav = ({ active }) => {
       <ul className="flex gap-10 list-none m-0 p-0 max-md:hidden">
         {links.map(l => (
           <li key={l.id}>
-            
+            <a
               href={"#" + l.id}
               className={"text-xs tracking-widest uppercase no-underline transition-colors " + (active === l.id ? "text-p1-accent" : "text-p1-muted")}
             >
@@ -77,7 +77,7 @@ const Nav = ({ active }) => {
           <ul className="flex flex-col list-none m-0 p-0">
             {links.map(l => (
               <li key={l.id}>
-                
+                <a
                   href={"#" + l.id}
                   onClick={() => setMenuOpen(false)}
                   className={"block px-6 py-3 text-xs tracking-widest uppercase no-underline transition-colors " + (active === l.id ? "text-p1-accent" : "text-p1-muted")}
@@ -341,7 +341,7 @@ const Noticias = () => {
                     {n.titulo}
                   </h3>
                   <p className="font-dm text-sm leading-relaxed text-p1-muted flex-1">{n.resumen}</p>
-                  
+                  <a
                     href={n.enlace}
                     className="mt-5 font-dm text-xs tracking-widest uppercase text-p1-accent no-underline inline-flex items-center gap-2 group/link"
                   >
@@ -514,7 +514,7 @@ const Contacto = () => {
             <h3 className="font-cormorant text-2xl mb-6 text-p1-text">Sígueme en redes</h3>
             <div className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
               {redes.map((r, i) => (
-                
+                <a
                   key={i}
                   href={r.url}
                   className="group flex items-center gap-3 p-4 rounded-xl border border-p1-border bg-p1-bg no-underline transition-all duration-300 hover:bg-p1-dark hover:border-p1-dark hover:-translate-y-0.5"
