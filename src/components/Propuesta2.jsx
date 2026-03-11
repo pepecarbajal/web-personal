@@ -507,7 +507,7 @@ const Proyectos = () => {
 }
 
 /* ─────────────────────────────────────────────
-   NUEVA SECCIÓN: NOTICIAS
+   NUEVA SECCIÓN: NOTICIAS + MODAL
 ───────────────────────────────────────────── */
 const categoriaBadgeColor = (cat) => {
   const map = {
@@ -519,128 +519,251 @@ const categoriaBadgeColor = (cat) => {
   return map[cat] || "bg-p2-pastel-1 text-p2-red border-p2-border";
 };
 
+/* Modal de noticia */
+const NoticiaModal = ({ noticia, onClose }) => {
+  // Cerrar con Escape
+  useEffect(() => {
+    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4 max-md:p-0"
+      style={{ background: "rgba(30,20,18,0.72)", backdropFilter: "blur(8px)" }}
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-[0_40px_120px_rgba(30,20,18,0.35)] max-md:max-h-screen max-md:rounded-none max-md:rounded-t-3xl max-md:mt-auto"
+        style={{ animation: "modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both" }}
+        onClick={e => e.stopPropagation()}
+      >
+        <style>{`
+          @keyframes modalIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+          }
+        `}</style>
+
+        {/* Hero imagen */}
+        <div className="relative overflow-hidden rounded-t-3xl max-md:rounded-t-3xl" style={{ height: 300 }}>
+          <img
+            src={noticia.imagen}
+            alt={noticia.titulo}
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to top, rgba(20,12,10,0.65) 0%, transparent 60%)" }}
+          />
+          {/* Badges sobre imagen */}
+          <div className="absolute bottom-5 left-6 flex items-center gap-3 flex-wrap">
+            <span className={`font-nunito text-xs font-semibold px-3 py-1 rounded-full border bg-white/90 backdrop-blur-sm ${categoriaBadgeColor(noticia.categoria)}`}>
+              {noticia.categoria}
+            </span>
+            <span className="font-nunito text-xs text-white/80 font-medium">{noticia.fecha}</span>
+          </div>
+          {/* Botón cerrar */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 size-10 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center text-white text-xl cursor-pointer hover:bg-white/30 transition-colors"
+            aria-label="Cerrar"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Contenido */}
+        <div className="p-8 max-md:p-6">
+          {/* Línea decorativa */}
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-0.5 bg-p2-red" />
+            <span className="font-nunito text-xs font-semibold tracking-widest uppercase text-p2-red">
+              {noticia.categoria}
+            </span>
+          </div>
+
+          <h2 className="font-playfair font-bold mb-5 text-p2-text leading-tight" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>
+            {noticia.titulo}
+          </h2>
+
+          {/* Separador */}
+          <div className="h-px bg-p2-border mb-6" />
+
+          {/* Cuerpo de la noticia — se usa el resumen extendido */}
+          <p className="font-nunito text-base leading-loose text-p2-text-soft mb-5">
+            {noticia.resumen}
+          </p>
+          {/* Párrafo extra de relleno para simular artículo completo */}
+          <p className="font-nunito text-base leading-loose text-p2-text-soft mb-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+          <p className="font-nunito text-base leading-loose text-p2-text-soft mb-8">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio, et tempus feugiat. Nullam varius consequat magna, id molestie ipsum volutpat quis.
+          </p>
+
+          {/* Footer del modal */}
+          <div className="flex items-center justify-between pt-5 border-t border-p2-border max-md:flex-col max-md:gap-4 max-md:items-start">
+            <div className="flex items-center gap-3">
+              <div className="size-9 rounded-full bg-p2-red flex items-center justify-center text-white font-playfair font-bold text-sm">
+                {data.persona.nombre.charAt(0)}
+              </div>
+              <div>
+                <p className="font-nunito text-sm font-semibold text-p2-text">{data.persona.nombre}</p>
+                <p className="font-nunito text-xs text-p2-text-muted">{noticia.fecha}</p>
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              className="font-nunito text-sm font-semibold px-6 py-2.5 rounded-full bg-p2-red text-white border-none cursor-pointer hover:opacity-85 transition-opacity shadow-[0_4px_16px_rgba(201,79,79,0.3)]"
+            >
+              ← Volver a noticias
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Noticias = () => {
   const [filtro, setFiltro] = useState("Todos");
+  const [noticiaAbierta, setNoticiaAbierta] = useState(null);
   const cats = ["Todos", ...new Set(data.noticias.map(n => n.categoria))];
   const filtered = filtro === "Todos" ? data.noticias : data.noticias.filter(n => n.categoria === filtro);
   const [destacada, ...resto] = filtered;
 
   return (
-    <section id="p2-noticias" className="py-28 bg-p2-bg-alt relative overflow-hidden max-md:py-16">
-      <div className="blob size-[380px] bg-p2-pastel-2 -bottom-16 -right-16 opacity-40" />
+    <>
+      {/* Modal */}
+      {noticiaAbierta && (
+        <NoticiaModal
+          noticia={noticiaAbierta}
+          onClose={() => setNoticiaAbierta(null)}
+        />
+      )}
 
-      <div className="max-w-6xl mx-auto px-14 relative z-10 max-md:px-6">
-        <Reveal>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-8 h-0.5 bg-p2-red" />
-            <span className="font-nunito text-xs font-semibold tracking-widest uppercase text-p2-red">
-              Actualidad
-            </span>
-          </div>
-          <h2
-            className="font-playfair font-bold mb-8 text-p2-text"
-            style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
-          >
-            Noticias y <em>novedades</em>
-          </h2>
+      <section id="p2-noticias" className="py-28 bg-p2-bg-alt relative overflow-hidden max-md:py-16">
+        <div className="blob size-[380px] bg-p2-pastel-2 -bottom-16 -right-16 opacity-40" />
 
-          {/* Filtros */}
-          <div className="flex flex-wrap gap-2 mb-12 max-md:mb-6">
-            {cats.map(c => (
-              <button
-                key={c}
-                onClick={() => setFiltro(c)}
-                className={`font-nunito text-sm font-medium px-5 py-2 rounded-full border cursor-pointer transition-all ${
-                  filtro === c
-                    ? "bg-p2-red border-p2-red text-white"
-                    : "bg-white border-p2-border text-p2-text-soft hover:border-p2-red hover:text-p2-red"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        </Reveal>
+        <div className="max-w-6xl mx-auto px-14 relative z-10 max-md:px-6">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-0.5 bg-p2-red" />
+              <span className="font-nunito text-xs font-semibold tracking-widest uppercase text-p2-red">
+                Actualidad
+              </span>
+            </div>
+            <h2
+              className="font-playfair font-bold mb-8 text-p2-text"
+              style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}
+            >
+              Noticias y <em>novedades</em>
+            </h2>
 
-        {destacada && (
-          <>
-            {/* Noticia destacada (primera) */}
-            <Reveal className="mb-6">
-              <a
-                href={destacada.enlace}
-                className="group grid grid-cols-12 gap-0 rounded-3xl overflow-hidden border border-p2-border bg-white shadow-[0_4px_24px_rgba(180,120,110,0.12)] no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(180,120,110,0.18)] max-md:grid-cols-1"
-              >
-                <div className="col-span-5 relative overflow-hidden max-md:col-span-1" style={{ minHeight: 280 }}>
-                  <img
-                    src={destacada.imagen}
-                    alt={destacada.titulo}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] absolute inset-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 max-md:hidden" />
-                </div>
-                <div className="col-span-7 p-8 flex flex-col justify-center max-md:p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className={`font-nunito text-xs font-semibold px-3 py-1 rounded-full border ${categoriaBadgeColor(destacada.categoria)}`}>
-                      {destacada.categoria}
-                    </span>
-                    <span className="font-nunito text-xs text-p2-text-muted">{destacada.fecha}</span>
-                    <span className="font-nunito text-xs font-semibold px-2 py-0.5 rounded-full bg-p2-red text-white">
-                      ★ Destacado
+            {/* Filtros */}
+            <div className="flex flex-wrap gap-2 mb-12 max-md:mb-6">
+              {cats.map(c => (
+                <button
+                  key={c}
+                  onClick={() => setFiltro(c)}
+                  className={`font-nunito text-sm font-medium px-5 py-2 rounded-full border cursor-pointer transition-all ${
+                    filtro === c
+                      ? "bg-p2-red border-p2-red text-white"
+                      : "bg-white border-p2-border text-p2-text-soft hover:border-p2-red hover:text-p2-red"
+                  }`}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+
+          {destacada && (
+            <>
+              {/* Noticia destacada (primera) */}
+              <Reveal className="mb-6">
+                <div
+                  onClick={() => setNoticiaAbierta(destacada)}
+                  className="group grid grid-cols-12 gap-0 rounded-3xl overflow-hidden border border-p2-border bg-white shadow-[0_4px_24px_rgba(180,120,110,0.12)] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(180,120,110,0.18)] max-md:grid-cols-1"
+                >
+                  <div className="col-span-5 relative overflow-hidden max-md:col-span-1" style={{ minHeight: 280 }}>
+                    <img
+                      src={destacada.imagen}
+                      alt={destacada.titulo}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] absolute inset-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 max-md:hidden" />
+                  </div>
+                  <div className="col-span-7 p-8 flex flex-col justify-center max-md:p-6">
+                    <div className="flex items-center gap-3 mb-4 flex-wrap">
+                      <span className={`font-nunito text-xs font-semibold px-3 py-1 rounded-full border ${categoriaBadgeColor(destacada.categoria)}`}>
+                        {destacada.categoria}
+                      </span>
+                      <span className="font-nunito text-xs text-p2-text-muted">{destacada.fecha}</span>
+                      <span className="font-nunito text-xs font-semibold px-2 py-0.5 rounded-full bg-p2-red text-white">
+                        ★ Destacado
+                      </span>
+                    </div>
+                    <h3 className="font-playfair text-2xl font-bold mb-3 text-p2-text max-md:text-xl">
+                      {destacada.titulo}
+                    </h3>
+                    <p className="font-nunito text-sm leading-loose text-p2-text-soft mb-6 line-clamp-3">{destacada.resumen}</p>
+                    <span className="font-nunito text-sm font-semibold text-p2-red group-hover:underline">
+                      Leer noticia completa →
                     </span>
                   </div>
-                  <h3 className="font-playfair text-2xl font-bold mb-3 text-p2-text max-md:text-xl">
-                    {destacada.titulo}
-                  </h3>
-                  <p className="font-nunito text-sm leading-loose text-p2-text-soft mb-6">{destacada.resumen}</p>
-                  <span className="font-nunito text-sm font-semibold text-p2-red group-hover:underline">
-                    Leer más →
-                  </span>
                 </div>
-              </a>
-            </Reveal>
+              </Reveal>
 
-            {/* Resto de noticias */}
-            {resto.length > 0 && (
-              <div className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
-                {resto.map((n, i) => (
-                  <Reveal key={n.id} delay={i * 0.08}>
-                    <a
-                      href={n.enlace}
-                      className="group rounded-3xl overflow-hidden border border-p2-border bg-white shadow-[0_4px_16px_rgba(180,120,110,0.10)] no-underline flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(180,120,110,0.18)]"
-                    >
-                      <div className="relative overflow-hidden" style={{ height: 180 }}>
-                        <img
-                          src={n.imagen}
-                          alt={n.titulo}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                        />
-                        <div className="absolute top-3 left-3">
-                          <span className={`font-nunito text-xs font-semibold px-3 py-1 rounded-full border bg-white/90 backdrop-blur-sm ${categoriaBadgeColor(n.categoria)}`}>
-                            {n.categoria}
+              {/* Resto de noticias */}
+              {resto.length > 0 && (
+                <div className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
+                  {resto.map((n, i) => (
+                    <Reveal key={n.id} delay={i * 0.08}>
+                      <div
+                        onClick={() => setNoticiaAbierta(n)}
+                        className="group rounded-3xl overflow-hidden border border-p2-border bg-white shadow-[0_4px_16px_rgba(180,120,110,0.10)] flex flex-col cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(180,120,110,0.18)]"
+                      >
+                        <div className="relative overflow-hidden" style={{ height: 180 }}>
+                          <img
+                            src={n.imagen}
+                            alt={n.titulo}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                          />
+                          <div className="absolute top-3 left-3">
+                            <span className={`font-nunito text-xs font-semibold px-3 py-1 rounded-full border bg-white/90 backdrop-blur-sm ${categoriaBadgeColor(n.categoria)}`}>
+                              {n.categoria}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="p-5 flex flex-col flex-1">
+                          <p className="font-nunito text-xs text-p2-text-muted mb-2">{n.fecha}</p>
+                          <h3 className="font-playfair text-lg font-semibold mb-2 text-p2-text leading-snug">
+                            {n.titulo}
+                          </h3>
+                          <p className="font-nunito text-sm leading-relaxed text-p2-text-soft flex-1 line-clamp-3">
+                            {n.resumen}
+                          </p>
+                          <span className="font-nunito text-xs font-semibold text-p2-red mt-4 group-hover:underline">
+                            Leer más →
                           </span>
                         </div>
                       </div>
-                      <div className="p-5 flex flex-col flex-1">
-                        <p className="font-nunito text-xs text-p2-text-muted mb-2">{n.fecha}</p>
-                        <h3 className="font-playfair text-lg font-semibold mb-2 text-p2-text leading-snug">
-                          {n.titulo}
-                        </h3>
-                        <p className="font-nunito text-sm leading-relaxed text-p2-text-soft flex-1 line-clamp-3">
-                          {n.resumen}
-                        </p>
-                        <span className="font-nunito text-xs font-semibold text-p2-red mt-4 group-hover:underline">
-                          Leer más →
-                        </span>
-                      </div>
-                    </a>
-                  </Reveal>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </section>
+                    </Reveal>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+    </>
   );
 }
 
