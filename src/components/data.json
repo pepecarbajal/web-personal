@@ -32,7 +32,7 @@
     }
   },
   "familia": {
-    "foto": "https://media.licdn.com/dms/image/v2/C4D12AQE07f3CSYZBHg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1603141099665?e=2147483647&v=beta&t=OZuAF6Dp4P5lARjkeQ4tgCyZhlgQADigkGEpfFmJ27w ",
+    "foto": "https://media.licdn.com/dms/image/v2/C4D12AQE07f3CSYZBHg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1603141099665?e=2147483647&v=beta&t=OZuAF6Dp4P5lARjkeQ4tgCyZhlgQADigkGEpfFmJ27w",
     "texto1": "Mi familia es... lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "texto2": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "texto3": "Cillum reprehenderit ipsum ad elit nostrud ipsum reprehenderit id consequat enim cupidatat commodo culpa. Ipsum tempor aute non laborum mollit Lorem mollit proident mollit aliquip. Ea aliqua sint nisi enim laboris nisi. Consectetur elit anim tempor enim velit. Consectetur ad ad incididunt qui id deserunt nulla proident ipsum veniam sint aliqua ipsum.",
@@ -40,7 +40,6 @@
       { "numero": "1", "label": "Años" },
       { "numero": "1", "label": "Viajes" },
       { "numero": "1", "label": "Países visitados" }
-      
     ]
   },
   "album": [
@@ -99,6 +98,120 @@
       "lugar": "Nombre del lugar",
       "descripcion": "Descripcion del lugar",
       "categoria": "Eventos"
+    }
+  ],
+  "noticias": [
+    {
+      "id": 1,
+      "titulo": "Noticia 1",
+      "resumen": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
+      "fecha": "3 de marzo, 2025",
+      "categoria": "Logro",
+      "imagen": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+      "enlace": "#"
+    },
+    {
+      "id": 2,
+      "titulo": "Noticia 2",
+      "resumen": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip commodo.",
+      "fecha": "14 de febrero, 2025",
+      "categoria": "Evento",
+      "imagen": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+      "enlace": "#"
+    },
+    {
+      "id": 3,
+      "titulo": "Noticia 3",
+      "resumen": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis.",
+      "fecha": "28 de enero, 2025",
+      "categoria": "Publicación",
+      "imagen": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80",
+      "enlace": "#"
+    },
+    {
+      "id": 4,
+      "titulo": "Noticia 4",
+      "resumen": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+      "fecha": "10 de enero, 2025",
+      "categoria": "Logro",
+      "imagen": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80",
+      "enlace": "#"
+    },
+    {
+      "id": 5,
+      "titulo": "Noticia 5",
+      "resumen": "Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
+      "fecha": "22 de diciembre, 2024",
+      "categoria": "Proyecto",
+      "imagen": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
+      "enlace": "#"
+    },
+    {
+      "id": 6,
+      "titulo": "Noticia 6",
+      "resumen": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas.",
+      "fecha": "5 de diciembre, 2024",
+      "categoria": "Evento",
+      "imagen": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
+      "enlace": "#"
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 1,
+      "nombre": "Proyecto 1",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      "categoria": "Desarrollo Web",
+      "año": "2025",
+      "imagen": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "tags": ["React", "Node.js", "Tailwind CSS", "PostgreSQL"],
+      "metricas": [
+        { "valor": "6", "label": "Meses" },
+        { "valor": "3", "label": "Colaboradores" },
+        { "valor": "200+", "label": "Usuarios" }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Proyecto 2",
+      "descripcion": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.",
+      "categoria": "Diseño UI/UX",
+      "año": "2024",
+      "imagen": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      "tags": ["Figma", "Illustrator", "Prototipado", "Research"],
+      "metricas": [
+        { "valor": "3", "label": "Meses" },
+        { "valor": "12", "label": "Pantallas" },
+        { "valor": "95%", "label": "Satisfacción" }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Proyecto 3",
+      "descripcion": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam.",
+      "categoria": "Ingeniería",
+      "año": "2024",
+      "imagen": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+      "tags": ["AutoCAD", "SolidWorks", "Simulación", "Prototipo físico"],
+      "metricas": [
+        { "valor": "8", "label": "Meses" },
+        { "valor": "5", "label": "Fases" },
+        { "valor": "1er", "label": "Lugar" }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Proyecto 4",
+      "descripcion": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur.",
+      "categoria": "Aplicación Móvil",
+      "año": "2023",
+      "imagen": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+      "tags": ["React Native", "Firebase", "UX Mobile", "API REST"],
+      "metricas": [
+        { "valor": "4", "label": "Meses" },
+        { "valor": "500+", "label": "Descargas" },
+        { "valor": "4.8", "label": "Calificación" }
+      ]
     }
   ],
   "contacto": {
