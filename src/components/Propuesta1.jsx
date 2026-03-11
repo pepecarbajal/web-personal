@@ -56,7 +56,6 @@ const Nav = ({ active }) => {
         {data.persona.nombre}
       </span>
 
-      {/* Desktop links */}
       <ul className="flex gap-10 list-none m-0 p-0 max-md:hidden">
         {links.map(l => (
           <li key={l.id}>
@@ -72,7 +71,6 @@ const Nav = ({ active }) => {
         ))}
       </ul>
 
-      {/* Mobile hamburger */}
       <button
         className="hidden max-md:flex flex-col gap-1.5 p-1 cursor-pointer border-none bg-transparent"
         onClick={() => setMenuOpen(o => !o)}
@@ -83,7 +81,6 @@ const Nav = ({ active }) => {
         <span className={`block h-px w-6 bg-p1-text transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
       </button>
 
-      {/* Mobile dropdown */}
       {menuOpen && (
         <div className="absolute top-full left-0 right-0 bg-p1-bg/95 backdrop-blur-md border-b border-p1-border/50 py-4 hidden max-md:block">
           <ul className="flex flex-col list-none m-0 p-0">
@@ -267,7 +264,6 @@ const Album = () => {
           </div>
         </FadeSection>
 
-        {/* Desktop grid */}
         <div className="grid grid-cols-3 gap-4 max-md:hidden" style={{ gridAutoRows: "260px" }}>
           {filtered.map((f, i) => (
             <div
@@ -295,7 +291,6 @@ const Album = () => {
           ))}
         </div>
 
-        {/* Mobile grid */}
         <div className="hidden max-md:grid grid-cols-2 gap-3" style={{ gridAutoRows: "180px" }}>
           {filtered.map((f) => (
             <div
@@ -341,7 +336,6 @@ const Noticias = () => {
           {noticias.map((n, i) => (
             <FadeSection key={n.id} delay={i * 0.1}>
               <article className="group flex flex-col h-full rounded-2xl overflow-hidden border border-p1-border bg-p1-bg transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(61,43,31,0.12)]">
-                {/* Imagen */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={n.imagen}
@@ -352,8 +346,6 @@ const Noticias = () => {
                     {n.categoria}
                   </span>
                 </div>
-
-                {/* Contenido */}
                 <div className="flex flex-col flex-1 p-6">
                   <p className="font-dm text-xs text-p1-muted mb-3">{n.fecha}</p>
                   <h3 className="font-cormorant text-xl font-semibold mb-3 text-p1-text leading-snug">
@@ -406,7 +398,6 @@ const Proyectos = () => {
                       : "border-p1-border bg-p1-bg hover:border-p1-accent/50"
                   }`}
                 >
-                  {/* Cabecera */}
                   <button
                     onClick={() => setActivo(abierto ? null : p.id)}
                     className="w-full flex items-center justify-between gap-6 p-7 cursor-pointer bg-transparent border-none text-left max-md:p-5"
@@ -424,7 +415,6 @@ const Proyectos = () => {
                         </h3>
                       </div>
                     </div>
-
                     <span
                       className={`shrink-0 size-8 rounded-full border border-p1-accent flex items-center justify-center font-dm text-p1-accent transition-transform duration-300 ${
                         abierto ? "rotate-45" : ""
@@ -435,7 +425,6 @@ const Proyectos = () => {
                     </span>
                   </button>
 
-                  {/* Detalle expandible */}
                   <div
                     style={{
                       maxHeight: abierto ? "600px" : "0",
@@ -445,7 +434,6 @@ const Proyectos = () => {
                     }}
                   >
                     <div className="grid grid-cols-2 gap-10 px-7 pb-8 pt-2 border-t border-p1-border max-md:grid-cols-1 max-md:px-5 max-md:gap-6">
-                      {/* Imagen */}
                       <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
                         <img
                           src={p.imagen}
@@ -453,11 +441,8 @@ const Proyectos = () => {
                           className="w-full h-full object-cover"
                         />
                       </div>
-
-                      {/* Info */}
                       <div className="flex flex-col justify-center">
                         <p className="font-dm text-sm leading-relaxed text-p1-muted mb-6">{p.descripcion}</p>
-
                         <div className="flex flex-wrap gap-2 mb-6">
                           {p.tags.map((t, ti) => (
                             <span
@@ -468,7 +453,6 @@ const Proyectos = () => {
                             </span>
                           ))}
                         </div>
-
                         {p.metricas && (
                           <div className="flex gap-8 pt-6 border-t border-p1-border">
                             {p.metricas.map((m, mi) => (
