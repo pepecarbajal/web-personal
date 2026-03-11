@@ -42,16 +42,9 @@ const Nav = ({ active }) => {
     { id: "proyectos", label: "Proyectos" },
     { id: "contacto",  label: "Contacto"  },
   ];
+
   return (
-    <nav className="
-      fixed top-0 left-0 right-0 z-50
-      flex justify-between items-center
-      px-16 py-4
-      bg-p1-bg/90 backdrop-blur-md
-      border-b border-p1-border/50
-      font-dm
-      max-md:px-6 max-md:py-3
-    ">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-16 py-4 bg-p1-bg/90 backdrop-blur-md border-b border-p1-border/50 font-dm max-md:px-6 max-md:py-3">
       <span className="font-cormorant text-2xl font-semibold text-p1-text">
         {data.persona.nombre}
       </span>
@@ -60,10 +53,8 @@ const Nav = ({ active }) => {
         {links.map(l => (
           <li key={l.id}>
             
-              href={`#${l.id}`}
-              className={`text-xs tracking-widest uppercase no-underline transition-colors ${
-                active === l.id ? "text-p1-accent" : "text-p1-muted"
-              }`}
+              href={"#" + l.id}
+              className={"text-xs tracking-widest uppercase no-underline transition-colors " + (active === l.id ? "text-p1-accent" : "text-p1-muted")}
             >
               {l.label}
             </a>
@@ -76,9 +67,9 @@ const Nav = ({ active }) => {
         onClick={() => setMenuOpen(o => !o)}
         aria-label="Menú"
       >
-        <span className={`block h-px w-6 bg-p1-text transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-        <span className={`block h-px w-6 bg-p1-text transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-        <span className={`block h-px w-6 bg-p1-text transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+        <span className={"block h-px w-6 bg-p1-text transition-all duration-300 " + (menuOpen ? "rotate-45 translate-y-2" : "")} />
+        <span className={"block h-px w-6 bg-p1-text transition-all duration-300 " + (menuOpen ? "opacity-0" : "")} />
+        <span className={"block h-px w-6 bg-p1-text transition-all duration-300 " + (menuOpen ? "-rotate-45 -translate-y-2" : "")} />
       </button>
 
       {menuOpen && (
@@ -87,11 +78,9 @@ const Nav = ({ active }) => {
             {links.map(l => (
               <li key={l.id}>
                 
-                  href={`#${l.id}`}
+                  href={"#" + l.id}
                   onClick={() => setMenuOpen(false)}
-                  className={`block px-6 py-3 text-xs tracking-widest uppercase no-underline transition-colors ${
-                    active === l.id ? "text-p1-accent" : "text-p1-muted"
-                  }`}
+                  className={"block px-6 py-3 text-xs tracking-widest uppercase no-underline transition-colors " + (active === l.id ? "text-p1-accent" : "text-p1-muted")}
                 >
                   {l.label}
                 </a>
