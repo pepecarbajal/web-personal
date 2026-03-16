@@ -206,7 +206,7 @@ const Hero = () => {
               <div className="text-xs text-p2-text-muted">{data.persona.ciudad}</div>
             </div>
             <div className="absolute -top-6 -right-6 size-14 rounded-2xl flex items-center justify-center text-2xl bg-white shadow-[0_8px_24px_rgba(180,120,110,0.12)] max-md:-right-2 max-md:-top-4 max-md:size-10 max-md:text-lg">
-              📐
+              
             </div>
           </div>
         </div>
